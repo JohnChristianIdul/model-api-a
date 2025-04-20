@@ -4,22 +4,26 @@ import pandas as pd
 import joblib
 from torch.utils.data import DataLoader
 from datetime import datetime, timedelta
-import requests
+from pathlib import Path
+import requests, io
 import logging
 import traceback
-import io
 
 from app.model.TimeSeriesDataset import TimeSeriesDataset
 from app.model.implementation import TCNForecaster
 
 logger = logging.getLogger(__name__)
 
-TARGET_COLUMN = "wl-a"
-SEQUENCE_LENGTH = 6
+model_path = Path(
+    "E:\\Idul, John Christian Personal\\Dev\\MTCN_API_WL-A\\app\\model\\models\\1.6\\wl_a_model_ver_1.6.pth")
+scaler_path = Path(
+    "E:\\Idul, John Christian Personal\\Dev\\MTCN_API_WL-A\\app\\model\\models\\1.6\\scalers_ver_1.6.joblib")
 
-# Raw GitHub URLs to your model + scaler
 MODEL_URL = "https://drive.google.com/uc?export=download&id=1JtYnxXkQzCQG89jMmxDwycDXzwBD6OgV"
 SCALER_URL = "https://drive.google.com/uc?export=download&id=1qR5EgoO1Um-SFH2WA_gdysU60zI3wbJx"
+
+TARGET_COLUMN = "wl-a"
+SEQUENCE_LENGTH = 6
 
 model = None
 scaler = None
@@ -32,33 +36,33 @@ lags = [1, 2, 4]
 
 
 def load_model():
-    """Load model and scaler directly from GitHub URLs"""
+    """Dynamically load TCNForecaster model and scaler from cloud URLs."""
     global model, scaler
 
     try:
-        # Load model directly from GitHub URL
-        model = TCNForecaster(input_size=len(get_all_feature_names()), output_size=1, num_channels=[62, 128, 256])
+        # Dynamically fetch the number of input features
+        feature_names = get_all_feature_names()  # You must define this function or import it correctly
+        input_size = len(feature_names)
 
-        # Get model file from GitHub
+        # Initialize model structure
+        model = TCNForecaster(input_size=input_size, output_size=1, num_channels=[64, 128, 256])
+
+        # Fetch and load model state dict
         model_response = requests.get(MODEL_URL)
         model_response.raise_for_status()
-
-        # Load model state dict from the response content
         model_buffer = io.BytesIO(model_response.content)
         state_dict = torch.load(model_buffer, map_location=torch.device("cpu"))
         model.load_state_dict(state_dict)
         model.eval()
 
-        # Get scaler file from GitHub
+        # Fetch and load scaler
         scaler_response = requests.get(SCALER_URL)
         scaler_response.raise_for_status()
-
-        # Load scaler from the response content
         scaler_buffer = io.BytesIO(scaler_response.content)
         scaler = joblib.load(scaler_buffer)
 
-        logger.info("Model and scaler loaded successfully from GitHub.")
-        print("[INFO] Model and scaler loaded successfully from GitHub.")
+        logger.info(f"Model and scaler loaded successfully with {input_size} features.")
+        print(f"[INFO] Model and scaler loaded successfully with {input_size} features.")
         return True
 
     except Exception as e:
@@ -67,6 +71,7 @@ def load_model():
         print(f"[ERROR] Failed to load model or scaler: {e}")
         print(traceback.format_exc())
         return False
+
 
 def preprocess_data(df):
     # Match the preprocessing steps from training code

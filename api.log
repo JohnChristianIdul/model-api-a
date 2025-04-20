@@ -2285,3 +2285,234 @@ RuntimeError: Error(s) in loading state_dict for TCNForecaster:
 	size mismatch for tcn.layers.1.downsample.weight: copying a param with shape torch.Size([128, 64, 1]) from checkpoint, the shape in current model is torch.Size([128, 62, 1]).
 
 2025-04-21 01:18:27,076 - app.main - ERROR - Prediction error: Model or scaler could not be loaded
+2025-04-21 01:36:33,111 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:36:33,117 - app.model.model - ERROR - Failed to load model or scaler: No connection adapters were found for 'E:\\Idul, John Christian Personal\\Dev\\MTCN_API_WL-A\\app\\model\\models\\1.6\\wl_a_model_ver_1.6.pth'
+2025-04-21 01:36:33,162 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 46, in load_model
+    model_response = requests.get(MODEL_URL)
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\requests\sessions.py", line 794, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'E:\\Idul, John Christian Personal\\Dev\\MTCN_API_WL-A\\app\\model\\models\\1.6\\wl_a_model_ver_1.6.pth'
+
+2025-04-21 01:36:56,697 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:36:56,702 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.google.com:443
+2025-04-21 01:36:57,255 - urllib3.connectionpool - DEBUG - https://drive.google.com:443 "GET /uc?export=download&id=1JtYnxXkQzCQG89jMmxDwycDXzwBD6OgV HTTP/1.1" 303 0
+2025-04-21 01:36:57,256 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.usercontent.google.com:443
+2025-04-21 01:37:00,198 - urllib3.connectionpool - DEBUG - https://drive.usercontent.google.com:443 "GET /download?id=1JtYnxXkQzCQG89jMmxDwycDXzwBD6OgV&export=download HTTP/1.1" 200 1727202
+2025-04-21 01:37:00,406 - app.model.model - ERROR - Failed to load model or scaler: Error(s) in loading state_dict for TCNForecaster:
+	size mismatch for tcn.layers.0.conv1.weight: copying a param with shape torch.Size([64, 25, 3]) from checkpoint, the shape in current model is torch.Size([62, 25, 3]).
+	size mismatch for tcn.layers.0.conv1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([62]).
+	size mismatch for tcn.layers.0.conv2.weight: copying a param with shape torch.Size([64, 64, 3]) from checkpoint, the shape in current model is torch.Size([62, 62, 3]).
+	size mismatch for tcn.layers.0.conv2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([62]).
+	size mismatch for tcn.layers.0.downsample.weight: copying a param with shape torch.Size([64, 25, 1]) from checkpoint, the shape in current model is torch.Size([62, 25, 1]).
+	size mismatch for tcn.layers.0.downsample.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([62]).
+	size mismatch for tcn.layers.1.conv1.weight: copying a param with shape torch.Size([128, 64, 3]) from checkpoint, the shape in current model is torch.Size([128, 62, 3]).
+	size mismatch for tcn.layers.1.downsample.weight: copying a param with shape torch.Size([128, 64, 1]) from checkpoint, the shape in current model is torch.Size([128, 62, 1]).
+2025-04-21 01:37:00,408 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 49, in load_model
+    model.load_state_dict(state_dict)
+  File "C:\Python312\Lib\site-packages\torch\nn\modules\module.py", line 2153, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for TCNForecaster:
+	size mismatch for tcn.layers.0.conv1.weight: copying a param with shape torch.Size([64, 25, 3]) from checkpoint, the shape in current model is torch.Size([62, 25, 3]).
+	size mismatch for tcn.layers.0.conv1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([62]).
+	size mismatch for tcn.layers.0.conv2.weight: copying a param with shape torch.Size([64, 64, 3]) from checkpoint, the shape in current model is torch.Size([62, 62, 3]).
+	size mismatch for tcn.layers.0.conv2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([62]).
+	size mismatch for tcn.layers.0.downsample.weight: copying a param with shape torch.Size([64, 25, 1]) from checkpoint, the shape in current model is torch.Size([62, 25, 1]).
+	size mismatch for tcn.layers.0.downsample.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([62]).
+	size mismatch for tcn.layers.1.conv1.weight: copying a param with shape torch.Size([128, 64, 3]) from checkpoint, the shape in current model is torch.Size([128, 62, 3]).
+	size mismatch for tcn.layers.1.downsample.weight: copying a param with shape torch.Size([128, 64, 1]) from checkpoint, the shape in current model is torch.Size([128, 62, 1]).
+
+2025-04-21 01:37:30,251 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:37:31,177 - app.model.model - INFO - Model and scaler loaded successfully with 25 features
+2025-04-21 01:37:31,178 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_header_field with data[54:73]
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_header_value with data[75:135]
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_header_field with data[137:149]
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_header_value with data[151:216]
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-21 01:37:31,179 - python_multipart.multipart - DEBUG - Calling on_part_data with data[220:261784]
+2025-04-21 01:37:31,180 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:37:31,180 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:37:31,181 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:37:31,181 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:37:31,183 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:240223]
+2025-04-21 01:37:31,183 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-21 01:37:31,183 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-21 01:37:33,527 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:37:33,536 - app.model.model - INFO - Feature dimensions before scaling: (52704, 25)
+2025-04-21 01:37:33,615 - app.model.model - INFO - Feature dimensions after processing: (52704, 25)
+2025-04-21 01:37:33,643 - app.model.model - INFO - TCN input tensor shape: torch.Size([24, 25, 6])
+2025-04-21 01:39:38,936 - app.model.model - ERROR - Failed to load model or scaler: name 'base_features' is not defined
+2025-04-21 01:39:38,939 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 26, in load_model
+    feature_names = get_all_feature_names()  # You must define this function or import it correctly
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 123, in get_all_feature_names
+    feature_names = base_features.copy()
+                    ^^^^^^^^^^^^^
+NameError: name 'base_features' is not defined
+
+2025-04-21 01:39:58,554 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:39:58,998 - app.model.model - INFO - Model and scaler loaded successfully with 25 features
+2025-04-21 01:40:16,769 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:40:16,774 - app.model.model - ERROR - Failed to load model or scaler: name 'requests' is not defined
+2025-04-21 01:40:16,775 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 47, in load_model
+    model_response = requests.get(MODEL_URL)
+                     ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-04-21 01:40:28,839 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:40:28,842 - app.model.model - ERROR - Failed to load model or scaler: name 'requests' is not defined
+2025-04-21 01:40:28,844 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 50, in load_model
+    model_response = requests.get(MODEL_URL)
+                     ^^^^^^^^
+NameError: name 'requests' is not defined
+
+2025-04-21 01:40:43,558 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:40:43,565 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.google.com:443
+2025-04-21 01:40:44,088 - urllib3.connectionpool - DEBUG - https://drive.google.com:443 "GET /uc?export=download&id=1c3nhTQl4TlsuikHDyj1NUocRdwvGqMz6 HTTP/1.1" 303 0
+2025-04-21 01:40:44,090 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.usercontent.google.com:443
+2025-04-21 01:40:47,680 - urllib3.connectionpool - DEBUG - https://drive.usercontent.google.com:443 "GET /download?id=1c3nhTQl4TlsuikHDyj1NUocRdwvGqMz6&export=download HTTP/1.1" 200 1728578
+2025-04-21 01:40:47,893 - app.model.model - ERROR - Failed to load model or scaler: Error(s) in loading state_dict for TCNForecaster:
+	size mismatch for tcn.layers.0.conv1.weight: copying a param with shape torch.Size([62, 34, 3]) from checkpoint, the shape in current model is torch.Size([64, 25, 3]).
+	size mismatch for tcn.layers.0.conv1.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.conv2.weight: copying a param with shape torch.Size([62, 62, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3]).
+	size mismatch for tcn.layers.0.conv2.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.downsample.weight: copying a param with shape torch.Size([62, 34, 1]) from checkpoint, the shape in current model is torch.Size([64, 25, 1]).
+	size mismatch for tcn.layers.0.downsample.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.1.conv1.weight: copying a param with shape torch.Size([128, 62, 3]) from checkpoint, the shape in current model is torch.Size([128, 64, 3]).
+	size mismatch for tcn.layers.1.downsample.weight: copying a param with shape torch.Size([128, 62, 1]) from checkpoint, the shape in current model is torch.Size([128, 64, 1]).
+2025-04-21 01:40:47,894 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 55, in load_model
+    model.load_state_dict(state_dict)
+  File "C:\Python312\Lib\site-packages\torch\nn\modules\module.py", line 2153, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for TCNForecaster:
+	size mismatch for tcn.layers.0.conv1.weight: copying a param with shape torch.Size([62, 34, 3]) from checkpoint, the shape in current model is torch.Size([64, 25, 3]).
+	size mismatch for tcn.layers.0.conv1.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.conv2.weight: copying a param with shape torch.Size([62, 62, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3]).
+	size mismatch for tcn.layers.0.conv2.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.downsample.weight: copying a param with shape torch.Size([62, 34, 1]) from checkpoint, the shape in current model is torch.Size([64, 25, 1]).
+	size mismatch for tcn.layers.0.downsample.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.1.conv1.weight: copying a param with shape torch.Size([128, 62, 3]) from checkpoint, the shape in current model is torch.Size([128, 64, 3]).
+	size mismatch for tcn.layers.1.downsample.weight: copying a param with shape torch.Size([128, 62, 1]) from checkpoint, the shape in current model is torch.Size([128, 64, 1]).
+
+2025-04-21 01:40:53,699 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-21 01:40:53,700 - python_multipart.multipart - DEBUG - Calling on_header_field with data[54:73]
+2025-04-21 01:40:53,700 - python_multipart.multipart - DEBUG - Calling on_header_value with data[75:135]
+2025-04-21 01:40:53,700 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-21 01:40:53,700 - python_multipart.multipart - DEBUG - Calling on_header_field with data[137:149]
+2025-04-21 01:40:53,700 - python_multipart.multipart - DEBUG - Calling on_header_value with data[151:216]
+2025-04-21 01:40:53,700 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-21 01:40:53,701 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-21 01:40:53,701 - python_multipart.multipart - DEBUG - Calling on_part_data with data[220:65756]
+2025-04-21 01:40:53,701 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:40:53,702 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:40:53,702 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:40:53,703 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:40:53,706 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:40:53,711 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:174107]
+2025-04-21 01:40:53,711 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-21 01:40:53,711 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-21 01:40:55,858 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:40:55,861 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.google.com:443
+2025-04-21 01:40:56,390 - urllib3.connectionpool - DEBUG - https://drive.google.com:443 "GET /uc?export=download&id=1c3nhTQl4TlsuikHDyj1NUocRdwvGqMz6 HTTP/1.1" 303 0
+2025-04-21 01:40:56,391 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.usercontent.google.com:443
+2025-04-21 01:40:59,692 - urllib3.connectionpool - DEBUG - https://drive.usercontent.google.com:443 "GET /download?id=1c3nhTQl4TlsuikHDyj1NUocRdwvGqMz6&export=download HTTP/1.1" 200 1728578
+2025-04-21 01:40:59,897 - app.model.model - ERROR - Failed to load model or scaler: Error(s) in loading state_dict for TCNForecaster:
+	size mismatch for tcn.layers.0.conv1.weight: copying a param with shape torch.Size([62, 34, 3]) from checkpoint, the shape in current model is torch.Size([64, 25, 3]).
+	size mismatch for tcn.layers.0.conv1.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.conv2.weight: copying a param with shape torch.Size([62, 62, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3]).
+	size mismatch for tcn.layers.0.conv2.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.downsample.weight: copying a param with shape torch.Size([62, 34, 1]) from checkpoint, the shape in current model is torch.Size([64, 25, 1]).
+	size mismatch for tcn.layers.0.downsample.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.1.conv1.weight: copying a param with shape torch.Size([128, 62, 3]) from checkpoint, the shape in current model is torch.Size([128, 64, 3]).
+	size mismatch for tcn.layers.1.downsample.weight: copying a param with shape torch.Size([128, 62, 1]) from checkpoint, the shape in current model is torch.Size([128, 64, 1]).
+2025-04-21 01:40:59,898 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 55, in load_model
+    model.load_state_dict(state_dict)
+  File "C:\Python312\Lib\site-packages\torch\nn\modules\module.py", line 2153, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for TCNForecaster:
+	size mismatch for tcn.layers.0.conv1.weight: copying a param with shape torch.Size([62, 34, 3]) from checkpoint, the shape in current model is torch.Size([64, 25, 3]).
+	size mismatch for tcn.layers.0.conv1.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.conv2.weight: copying a param with shape torch.Size([62, 62, 3]) from checkpoint, the shape in current model is torch.Size([64, 64, 3]).
+	size mismatch for tcn.layers.0.conv2.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.0.downsample.weight: copying a param with shape torch.Size([62, 34, 1]) from checkpoint, the shape in current model is torch.Size([64, 25, 1]).
+	size mismatch for tcn.layers.0.downsample.bias: copying a param with shape torch.Size([62]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for tcn.layers.1.conv1.weight: copying a param with shape torch.Size([128, 62, 3]) from checkpoint, the shape in current model is torch.Size([128, 64, 3]).
+	size mismatch for tcn.layers.1.downsample.weight: copying a param with shape torch.Size([128, 62, 1]) from checkpoint, the shape in current model is torch.Size([128, 64, 1]).
+
+2025-04-21 01:40:59,901 - app.main - ERROR - Prediction error: Model or scaler could not be loaded
+2025-04-21 01:42:43,941 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:42:43,947 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.google.com:443
+2025-04-21 01:42:44,694 - urllib3.connectionpool - DEBUG - https://drive.google.com:443 "GET /uc?export=download&id= HTTP/1.1" 400 None
+2025-04-21 01:42:44,703 - app.model.model - ERROR - Failed to load model or scaler: 400 Client Error: Bad Request for url: https://drive.google.com/uc?export=download&id=
+2025-04-21 01:42:44,705 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 52, in load_model
+    model_response.raise_for_status()
+  File "C:\Python312\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://drive.google.com/uc?export=download&id=
+
+2025-04-21 01:43:01,471 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:43:01,476 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.google.com:443
+2025-04-21 01:43:01,993 - urllib3.connectionpool - DEBUG - https://drive.google.com:443 "GET /uc?export=download&id= HTTP/1.1" 400 None
+2025-04-21 01:43:01,996 - app.model.model - ERROR - Failed to load model or scaler: 400 Client Error: Bad Request for url: https://drive.google.com/uc?export=download&id=
+2025-04-21 01:43:01,997 - app.model.model - ERROR - Traceback (most recent call last):
+  File "E:\Idul, John Christian Personal\Dev\MTCN_API_WL-A\app\model\model.py", line 52, in load_model
+    model_response.raise_for_status()
+  File "C:\Python312\Lib\site-packages\requests\models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://drive.google.com/uc?export=download&id=
+
+2025-04-21 01:43:17,852 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:43:17,859 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.google.com:443
+2025-04-21 01:43:18,379 - urllib3.connectionpool - DEBUG - https://drive.google.com:443 "GET /uc?export=download&id=1JtYnxXkQzCQG89jMmxDwycDXzwBD6OgV HTTP/1.1" 303 0
+2025-04-21 01:43:18,381 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.usercontent.google.com:443
+2025-04-21 01:43:21,453 - urllib3.connectionpool - DEBUG - https://drive.usercontent.google.com:443 "GET /download?id=1JtYnxXkQzCQG89jMmxDwycDXzwBD6OgV&export=download HTTP/1.1" 200 1727202
+2025-04-21 01:43:21,646 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.google.com:443
+2025-04-21 01:43:22,172 - urllib3.connectionpool - DEBUG - https://drive.google.com:443 "GET /uc?export=download&id=1qR5EgoO1Um-SFH2WA_gdysU60zI3wbJx HTTP/1.1" 303 0
+2025-04-21 01:43:22,173 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): drive.usercontent.google.com:443
+2025-04-21 01:43:25,253 - urllib3.connectionpool - DEBUG - https://drive.usercontent.google.com:443 "GET /download?id=1qR5EgoO1Um-SFH2WA_gdysU60zI3wbJx&export=download HTTP/1.1" 200 2022
+2025-04-21 01:43:25,666 - app.model.model - INFO - Model and scaler loaded successfully with 25 features.
+2025-04-21 01:43:30,034 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-04-21 01:43:30,034 - python_multipart.multipart - DEBUG - Calling on_header_field with data[54:73]
+2025-04-21 01:43:30,034 - python_multipart.multipart - DEBUG - Calling on_header_value with data[75:135]
+2025-04-21 01:43:30,035 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-21 01:43:30,035 - python_multipart.multipart - DEBUG - Calling on_header_field with data[137:149]
+2025-04-21 01:43:30,035 - python_multipart.multipart - DEBUG - Calling on_header_value with data[151:216]
+2025-04-21 01:43:30,035 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-04-21 01:43:30,035 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-04-21 01:43:30,036 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:43:30,036 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:43:30,036 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:196608]
+2025-04-21 01:43:30,037 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:196608]
+2025-04-21 01:43:30,037 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:65536]
+2025-04-21 01:43:30,037 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:196608]
+2025-04-21 01:43:30,039 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:262144]
+2025-04-21 01:43:30,044 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:108571]
+2025-04-21 01:43:30,044 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-04-21 01:43:30,044 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-04-21 01:43:32,275 - app.model.model - INFO - Total feature count: 25, Features: ['rf-a', 'rf-a-sum', 'wl-ch-a', 'day_of_week', 'week', 'month', 'year', 'rf-a_10min_avg', 'rf-a_20min_avg', 'rf-a_30min_avg', 'rf-a-sum_10min_avg', 'rf-a-sum_20min_avg', 'rf-a-sum_30min_avg', 'wl-ch-a_10min_avg', 'wl-ch-a_20min_avg', 'wl-ch-a_30min_avg', 'rf-a_lag_1', 'rf-a_lag_2', 'rf-a_lag_4', 'rf-a-sum_lag_1', 'rf-a-sum_lag_2', 'rf-a-sum_lag_4', 'wl-ch-a_lag_1', 'wl-ch-a_lag_2', 'wl-ch-a_lag_4']
+2025-04-21 01:43:32,280 - app.model.model - INFO - Feature dimensions before scaling: (52704, 25)
+2025-04-21 01:43:32,356 - app.model.model - INFO - Feature dimensions after processing: (52704, 25)
+2025-04-21 01:43:32,358 - app.model.model - INFO - TCN input tensor shape: torch.Size([24, 25, 6])
